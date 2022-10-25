@@ -10,6 +10,7 @@ contract Exchange {
     mapping (address => mapping(address => uint256)) public tokens;
     mapping (uint256 => _Order)public orders;
     uint256 public orderCount;
+    mapping(uint256 => bool) public orderCancelled; // boolean -  true or false 
     //Orders mapping 
 
     event Deposit(
@@ -25,6 +26,15 @@ contract Exchange {
         uint256 balance);
 
     event Order(
+        uint256 id,        
+        address user,   
+        address tokenGet,
+        uint amountGet, 
+        address tokenGive,  
+        uint amountGive, 
+        uint256 timestamp);
+
+    event Cancel(
         uint256 id,        
         address user,   
         address tokenGet,
@@ -106,7 +116,7 @@ contract Exchange {
             require(balanceOf(_tokenGive,msg.sender)>=_amountGive);
 
 
-            //Istatiate ORDER
+            //Instatiate ORDER
             orderCount = orderCount + 1;
 
             //Token Give (the token they want to sepend) - which token and how much?
@@ -129,6 +139,34 @@ contract Exchange {
                 _amountGet,
                 _tokenGive,
                 _amountGive,
-                block.timestamp); 
+                block.timestamp
+            ); 
         }        
-}
+
+        function cancelOrder(uint256 _id) 
+        public {
+            //Fetch order
+            _Order storage _order = orders[_id];
+
+            
+             //Order must exist
+            require(_order.id == _id);
+
+            //Ensure the caller of the function is the owner of the order
+           require(address(_order.user)==msg.sender);
+            
+            //Cancel order
+            orderCancelled[_id] = true;
+
+             //Emit Event
+            emit Cancel(
+                orderCount, 
+                msg.sender,
+                _order.tokenGet,
+                _order.amountGet,
+                _order.tokenGive,
+                _order.amountGive,
+                block.timestamp
+            ); 
+        }
+}   
