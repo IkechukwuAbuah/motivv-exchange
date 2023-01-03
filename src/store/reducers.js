@@ -1,0 +1,42 @@
+/**
+ * This is a reducer - a function that takes a current state value and an
+ * action object describing "what happened", and returns a new state value.
+ * A reducer's function signature is: (state, action) => newState
+ * starting state = {}
+ **/
+export const provider = (state = {}, action) => {
+    switch (action.type) {
+      case 'PROVIDER_LOADED':
+        return {
+          ...state,
+          connection: action.connection
+        }
+      case 'NETWORK_LOADED':
+        return {
+          ...state,
+          chainId: action.chainId
+        }
+      case 'ACCOUNT_LOADED':
+        return {
+          ...state,
+          account: action.account
+        }
+  
+      default:
+        return state
+    }
+  }
+  
+  export const tokens = (state = { loaded: false, contract: null }, action) => {
+    switch (action.type) {
+      case 'TOKEN_LOADED':
+        return {
+          ...state,
+          loaded: true,
+          contract: action.token,
+          symbol: action.symbol
+        }
+        default:
+          return state
+    }
+  }
