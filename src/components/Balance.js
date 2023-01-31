@@ -72,15 +72,13 @@ const Balance = () => {
       transferTokens(provider, exchange, 'Withdraw', token, token2TransferAmount, dispatch)
       setToken2TransferAmount(0)
     }
-
-    console.log("withrawing tokens...")
   }
 
   useEffect(() => {
     if(exchange && tokens[0] && tokens[1] && account) {
       loadBalances(exchange, tokens, account, dispatch)
     }
-  }, [exchange, tokens, account, transferInProgress])
+  }, [exchange, tokens, account, transferInProgress, dispatch])
 
   return (
     <div className='component exchange__transfers'>
@@ -92,7 +90,7 @@ const Balance = () => {
         </div>
       </div>
 
-      {/* Deposit/Withdraw Component 1 (Motivv) */}
+      {/* Deposit/Withdraw Component 1 (motv) */}
 
       <div className='exchange__transfers--form'>
         <div className='flex-between'>
@@ -132,7 +130,7 @@ const Balance = () => {
         </div>
 
         <form onSubmit={isDeposit ? (e) => depositHandler(e, tokens[1]) : (e) => withdrawHandler(e, tokens[1])}>
-          <label htmlFor="token1"></label>
+          <label htmlFor="token1">{symbols && symbols[1]} Amount</label>
           <input
             type="text"
             id='token1'

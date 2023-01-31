@@ -9,6 +9,7 @@ const RED = '#F45353'
 
 const account = state => get(state, 'provider.account')
 const tokens = state => get(state, 'tokens.contracts')
+const events = state => get(state, 'exchange.events')
 
 const allOrders = state => get(state, 'exchange.allOrders.data', [])
 const cancelledOrders = state => get(state, 'exchange.cancelledOrders.data', [])
@@ -28,6 +29,19 @@ const openOrders = state => {
   return openOrders
 
 }
+
+// ------------------------------------------------------------------------------
+// MY EVENTS
+
+export const myEventsSelector = createSelector(
+  account,
+  events,
+  (account, events) => {
+    events = events.filter((e) => e.args.user === account)
+    console.log(events)
+    return events
+  }
+)
 
 // ------------------------------------------------------------------------------
 // MY OPEN ORDERS
@@ -79,7 +93,7 @@ const decorateMyOpenOrder = (order, tokens) => {
 const decorateOrder = (order, tokens) => {
   let token0Amount, token1Amount
 
-  // Note: Motivv's coin (motv) should be considered token0, mETH is considered token1
+  // Note: Motivv's coin "motv" should be considered token0, mETH is considered token1
   // Example: Giving mETH in exchange for motv
   if (order.tokenGive === tokens[1].address) {
     token0Amount = order.amountGive // The amount of motv we are giving
