@@ -12,7 +12,5 @@ Covers the following principles & functionality:
 - Mumbai deployment - https://mumbai.polygonscan.com/address/0x4fe4a647864127515e08bcf3f09070278e57b8a1
 
 
-Test on Goerli/Mumbai networks here:
-https://flat-mountain-8913.on.fleek.co/
-
+Test on Goerli/Mumbai networks here: https://ikabuah-motivv.on.fleek.co/
 ![image](https://user-images.githubusercontent.com/95027624/216844942-fde31d50-9c7f-4a92-9057-f1d3a8c9674e.png)
