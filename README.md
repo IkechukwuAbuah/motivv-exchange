@@ -9,7 +9,7 @@ Covers the following principles & functionality:
 - Exchange functionality - token, orders
 - Front End 
 - Goerli deployment - 0x4fE4a647864127515e08bCf3F09070278E57B8A1 view (https://goerli.etherscan.io/address/0x4fE4a647864127515e08bCf3F09070278E57B8A1)
-- Mumbai deployment - 
+- Mumbai deployment - https://mumbai.polygonscan.com/address/0x4fe4a647864127515e08bcf3f09070278e57b8a1
 
 
 Test on Goerli/Mumbai networks here:
