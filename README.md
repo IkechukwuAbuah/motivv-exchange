@@ -9,3 +9,8 @@ Covers the following principles & functionality:
 - Exchange functionality - token, orders
 - Front End 
 - Goerli deployment - 0x4fE4a647864127515e08bCf3F09070278E57B8A1 view (https://goerli.etherscan.io/address/0x4fE4a647864127515e08bCf3F09070278E57B8A1)
+- Mumbai deployment - 
+
+
+Test on Goerli/Mumbai networks here:
+https://flat-mountain-8913.on.fleek.co/
